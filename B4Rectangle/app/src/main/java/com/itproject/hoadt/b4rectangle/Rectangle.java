@@ -13,6 +13,8 @@ import android.view.View;
  * Vẽ hình  vuông
  */
 public class Rectangle {
+    private int width;
+    private int height;
     //tọa độ tại góc trên bên trái của hình
     private float x;
     private float y;
@@ -20,15 +22,16 @@ public class Rectangle {
     private int size;
     private Paint paint;
 
-    private   float stepX = size/20;
+    private float stepX;
     private final float widthScreen = Resources.getSystem().getDisplayMetrics().widthPixels;
     private final float heightScreen = Resources.getSystem().getDisplayMetrics().heightPixels;
 
 
-    public Rectangle(  int color, int x, int y, int size) {
+    public Rectangle(int color, int x, int y, int size) {
         this.x = x;
         this.y = y;
         this.size = size;
+        stepX = size / 5;
         paint = new Paint(color);
     }
 
@@ -37,17 +40,23 @@ public class Rectangle {
         canvas.drawRect(x, y, x + size, y + size, paint);
     }
 
+    public void setBound(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
     public boolean moveLeft() {
-        x = x - stepX;
-        if (x <= 0)
+        if (x - stepX <= 0)
             return false;
+        x = x - stepX;
         return true;
     }
 
     public boolean moveRight() {
-        x = x + stepX;
-        if (x + size > widthScreen)
+        if (x + stepX > widthScreen)
             return false;
+
+        x = x + stepX;
         return true;
     }
 

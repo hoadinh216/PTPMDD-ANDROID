@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainDraw = findViewById(R.id.MainDraw);
+        mainDraw = findViewById(R.id.mainDraw);
         imgLeft = findViewById(R.id.imgLeft);
         imgRight = findViewById(R.id.imgRight);
         imgPause = findViewById(R.id.imgPause);
